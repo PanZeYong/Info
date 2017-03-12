@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">InfoApplication</string>
+
+    <string name="health_knowledge">生活 ・ 健康知识</string>
+    <string name="setting">Setting</string>
+    <string name="share">Share</string>
+    <string name="health_knowledge_title">健康知识</string>
+</resources>

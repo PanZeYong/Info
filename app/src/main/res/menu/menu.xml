@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/health_knowledge"
+        android:icon="@drawable/search"
+        android:title="@string/health_knowledge"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/setting"
+        android:title="@string/setting"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/share"
+        android:title="@string/share"
+        app:showAsAction="ifRoom"/>
+</menu>

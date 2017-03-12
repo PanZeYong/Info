@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+
+def cfg = rootProject.ext.configuration;
+def libs = rootProject.ext.libraries;
+
+android {
+    compileSdkVersion cfg.compileSdkVersion
+    buildToolsVersion cfg.buildToolsVersion
+
+    defaultConfig {
+        applicationId cfg.package
+        minSdkVersion cfg.minSdkVersion
+        targetSdkVersion cfg.targetSdkVersion
+        versionCode cfg.versionCode
+        versionName cfg.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    //Junit测试依赖
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile "junit:junit:${libs.junitVersion}"
+
+    //Espresso测试依赖
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${libs.espressoVersion}", {
+        exclude group: "com.android.support', module: 'support-annotations"
+    })
+
+    //SupportLibrary
+    compile "com.android.support:appcompat-v7:${libs.supportLibraryVersion}"
+    compile "com.android.support:design:${libs.supportLibraryVersion}"
+
+    //ButterKnife(注解)
+    compile "com.jakewharton:butterknife:${libs.butterknifeVersion}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${libs.butterknifeVersion}"
+
+    //Picasso(图片)
+    compile "com.squareup.picasso:picasso:${libs.picassoVersion}"
+
+    //Retrofit(网络)
+    compile "com.squareup.retrofit2:retrofit:${libs.retrofitVersion}"
+    compile "com.squareup.retrofit2:converter-gson:${libs.retrofitVersion}"
+    compile "com.squareup.retrofit2:adapter-rxjava:${libs.retrofitVersion}"
+
+    //OkHttp
+    compile "com.squareup.okhttp3:okhttp:${libs.okhttpVersion}"
+    compile "com.squareup.okhttp3:logging-interceptor:${libs.okhttpVersion}"
+
+    //RxJava(异步)
+    compile "io.reactivex:rxjava:${libs.rxjavaVersion}"
+    compile "io.reactivex:rxandroid:${libs.rxandroidVersion}"
+
+    //Timber(日志)
+    compile "com.jakewharton.timber:timber:${libs.timberVersion}"
+
+    //LeakCanary(内存检测)
+    debugCompile "com.squareup.leakcanary:leakcanary-android:${libs.leakcanaryVersion}"
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:${libs.leakcanaryVersion}"
+    testCompile "com.squareup.leakcanary:leakcanary-android-no-op:${libs.leakcanaryVersion}"
+}

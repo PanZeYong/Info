@@ -1,0 +1,49 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.1'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    configuration = [
+            package                     :   "com.pan.info",
+            buildToolsVersion           :   "25.0.2",
+            compileSdkVersion           :   24,
+            minSdkVersion               :   18,
+            targetSdkVersion            :   24,
+            versionCode                 :   1,
+            versionName                 :   "1.0",
+    ]
+
+    libraries = [
+            junitVersion                :   "4.12",
+            espressoVersion             :   "2.2.2",
+            supportLibraryVersion       :   "24.0.0",
+            butterknifeVersion          :   "8.4.0",
+            picassoVersion              :   "2.5.2",
+            retrofitVersion             :   "2.1.0",
+            okhttpVersion               :   "3.4.2",
+            rxjavaVersion               :   "1.2.5",
+            rxandroidVersion            :   "1.2.1",
+            timberVersion               :   "4.5.0",
+            leakcanaryVersion           :   "1.5",
+    ]
+}
