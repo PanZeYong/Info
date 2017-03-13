@@ -12,7 +12,12 @@
         android:layout_height="wrap_content">
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout"
-            android:background="?attr/colorAccent"
+            android:background="@color/blue"
+            app:tabIndicatorColor="@color/tab_indicator_color"
+            app:tabTextColor="@color/tab_text_color"
+            app:tabSelectedTextColor="@color/tab_selected_text_color"
+            app:tabPaddingStart="@dimen/tab_left_padding"
+            app:tabPaddingEnd="@dimen/tab_right_padding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </android.support.design.widget.TabLayout>

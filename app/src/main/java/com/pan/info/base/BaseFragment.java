@@ -1,5 +1,6 @@
 package com.pan.info.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -30,6 +31,8 @@ public abstract class BaseFragment<P extends BasePresenter>
 
     private Unbinder unbind;
 
+    protected Context mContext;
+
     /**
      * 返回要加载布局id
      *
@@ -53,6 +56,7 @@ public abstract class BaseFragment<P extends BasePresenter>
         View view = inflater.inflate(initContentView(), container, false);
         this.unbind = ButterKnife.bind(this, view);
         this.mPresenter = checkNotNull(bindPresenter());
+        this.mContext = getContext();
         return view;
     }
 

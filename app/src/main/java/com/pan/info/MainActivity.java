@@ -67,16 +67,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         mToolbar.setTitle(title);
     }
 
-    @Override
-    public void showLoadingView() {
-
-    }
-
-    @Override
-    public void hideLoadingView() {
-
-    }
-
     private void initToolbar() {
         mToolbar.setTitle(getResources().getString(R.string.app_name));
     }

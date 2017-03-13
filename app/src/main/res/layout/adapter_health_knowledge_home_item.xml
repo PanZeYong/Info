@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/adapter_item_avatar_height"
+    android:background="@drawable/shape_adapter_health_knowledge_item"
+    android:elevation="@dimen/adapter_item_elevation">
+
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="@dimen/adapter_item_avatar_width"
+        android:layout_height="@dimen/adapter_item_avatar_height"
+        android:padding="5dp"
+        android:src="@drawable/default_avatar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/adapter_item_avatar_height"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:layout_toRightOf="@id/iv_avatar">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="标题" />
+
+        <TextView
+            android:id="@+id/tv_keyword"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="关键字" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/iv_update_time"
+                style="@style/HealthKnowledgeAdapterItem"
+                android:text="更新时间：2016-03-02"/>
+
+            <TextView
+                android:id="@+id/iv_comment_count"
+                style="@style/HealthKnowledgeAdapterItem"
+                android:layout_alignParentRight="true"
+                android:text="评论数：200"/>
+
+            <TextView
+                android:id="@+id/iv_collect_count"
+                style="@style/HealthKnowledgeAdapterItem"
+                android:layout_toLeftOf="@id/iv_comment_count"
+                android:text="收藏：200"/>
+
+            <TextView
+                android:id="@+id/iv_visit_count"
+                style="@style/HealthKnowledgeAdapterItem"
+                android:layout_toLeftOf="@id/iv_collect_count"
+                android:text="访问数：200"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/background"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

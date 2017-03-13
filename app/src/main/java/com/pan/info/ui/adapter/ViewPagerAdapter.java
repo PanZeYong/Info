@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.pan.info.ui.fragment.TestFragment;
+import com.pan.info.ui.fragment.HealthKnowledgeListFragment;
 
 import java.util.List;
 
@@ -15,13 +15,13 @@ import java.util.List;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    private List<TestFragment> mList;
+    private List<HealthKnowledgeListFragment> mList;
 
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
-    public void refresh(List<TestFragment> list) {
+    public void refresh(List<HealthKnowledgeListFragment> list) {
         this.mList = list;
         notifyDataSetChanged();
     }

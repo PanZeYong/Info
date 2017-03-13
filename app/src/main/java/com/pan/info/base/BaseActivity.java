@@ -103,10 +103,10 @@ public abstract class BaseActivity<P extends BasePresenter>
     protected void setStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             StatusBarUtils.setColorForDrawerLayout(this, (DrawerLayout) findViewById(R.id.drawer),
-                    getColor(R.color.green), 0);
+                    getColor(R.color.blue), 0);
         } else {
             StatusBarUtils.setColorForDrawerLayout(this, (DrawerLayout) findViewById(R.id.drawer),
-                    getResources().getColor(R.color.green), 0);
+                    getResources().getColor(R.color.blue), 0);
         }
     }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <corners android:radius="@dimen/shape_adapter_health_knowledge_item_radius" />
+
+    <size android:height="@dimen/adapter_item_avatar_height" />
+
+    <solid android:color="@color/white"/>
+</shape>

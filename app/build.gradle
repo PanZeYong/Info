@@ -71,6 +71,8 @@ dependencies {
     //Timber(日志)
     compile "com.jakewharton.timber:timber:${libs.timberVersion}"
 
+    compile "com.jcodecraeer:xrecyclerview:${libs.xrecyclerviewVersion}"
+
     //LeakCanary(内存检测)
     debugCompile "com.squareup.leakcanary:leakcanary-android:${libs.leakcanaryVersion}"
     releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:${libs.leakcanaryVersion}"

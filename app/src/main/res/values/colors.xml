@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="green">#00FF00</color>
+    <color name="blue">#00AFCC</color>
     <color name="white">#ffffff</color>
+    <color name="background">#E1E1E1</color>
+
+    <color name="tab_indicator_color">#FFFF73</color>
+    <color name="tab_text_color">#A3E7F0</color>
+    <color name="tab_selected_text_color">#ffffff</color>
 </resources>

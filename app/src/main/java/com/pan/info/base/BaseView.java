@@ -17,7 +17,7 @@ public interface BaseView extends RxLifecycle.Impl{
      * @return
      */
 
-    void showLoadingView();
+//    void showLoadingView();
 
     /**
      * 取消加载视图，告诉用户数据获取完毕
@@ -26,5 +26,5 @@ public interface BaseView extends RxLifecycle.Impl{
      * @param
      * @return
      */
-    void hideLoadingView();
+//    void hideLoadingView();
 }
