@@ -1,14 +1,18 @@
 package com.pan.info.api;
 
+import android.content.Context;
+
 import com.pan.info.BuildConfig;
 import com.pan.info.Constant;
 import com.pan.info.bean.HealthKnowledgeCategoryBean;
 import com.pan.info.bean.HealthKnowledgeDetailBean;
 import com.pan.info.bean.HealthKnowledgeListBean;
+import com.pan.info.util.Utils;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -30,11 +34,11 @@ public class HealthKnowledgeApi {
 
     private HealthKnowledgeApiService mService;
 
-    public HealthKnowledgeApi() {
+    public HealthKnowledgeApi(Context context) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .addNetworkInterceptor(new HeaderInterceptor())
                 .connectTimeout(Constant.CONNECT_TIMEOUT, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(true);
+                .cache(new Cache(Utils.createCacheDir(context), Utils.calculateMemorySize()));
 
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

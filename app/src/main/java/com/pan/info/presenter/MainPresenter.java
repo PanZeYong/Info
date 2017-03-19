@@ -13,11 +13,6 @@ import com.pan.info.base.BasePresenter;
  */
 
 public abstract class MainPresenter extends BasePresenter<MainView> {
-
-    protected MainPresenter(@NonNull MainView view) {
-        super(view);
-    }
-
     /**
      * NavigationView MenuItem点击事件
      * @param item item

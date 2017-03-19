@@ -1,13 +1,10 @@
 package com.pan.info.base;
-
-import com.pan.info.util.RxLifecycle;
-
 /**
  * Author : Pan
  * Date : 1/17/17
  */
 
-public interface BaseView extends RxLifecycle.Impl{
+public interface BaseView {
 
     /**
      * 显示加载视图，向用户提示正在获取数据

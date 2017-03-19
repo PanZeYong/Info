@@ -1,9 +1,10 @@
 package com.pan.info.presenter;
 
-import android.support.annotation.NonNull;
+import android.content.Context;
 
 import com.pan.info.base.BasePresenter;
 import com.pan.info.ui.view.HealthKnowledgeView;
+
 
 /**
  * Author : Pan
@@ -13,7 +14,5 @@ import com.pan.info.ui.view.HealthKnowledgeView;
 public abstract class HealthKnowledgePresenter
         extends BasePresenter<HealthKnowledgeView>{
 
-    protected HealthKnowledgePresenter(@NonNull HealthKnowledgeView view) {
-        super(view);
-    }
+    public abstract void getCategories(Context context);
 }

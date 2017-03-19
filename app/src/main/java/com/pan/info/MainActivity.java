@@ -7,12 +7,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-
 import com.pan.info.base.BaseActivity;
 import com.pan.info.presenter.MainPresentImpl;
 import com.pan.info.presenter.MainPresenter;
 import com.pan.info.ui.view.MainView;
-
 import butterknife.BindView;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements MainView {
@@ -35,6 +33,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     @Override
     protected void init() {
+        mPresenter.attachView(this);
         initToolbar();
         initActionBarDrawerToggle();
     }
@@ -49,12 +48,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     @Override
     protected void release() {
-
+        mPresenter.detachView();
     }
 
     @Override
     protected MainPresenter bindPresenter() {
-        return new MainPresentImpl(this);
+        return new MainPresentImpl();
     }
 
     @Override

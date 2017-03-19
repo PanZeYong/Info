@@ -3,12 +3,12 @@ package com.pan.info.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.pan.info.util.RxLifecycle;
+import com.pan.info.InfoApplication;
+import com.trello.rxlifecycle.components.support.RxFragment;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -21,13 +21,9 @@ import static com.google.gson.internal.$Gson$Preconditions.checkNotNull;
  */
 
 public abstract class BaseFragment<P extends BasePresenter>
-        extends Fragment implements RxLifecycle.Impl{
+        extends RxFragment {
 
-    private RxLifecycle mRxLifecycle = new RxLifecycle();
-
-    private P mPresenter;
-
-    abstract protected P bindPresenter();
+    protected P mPresenter;
 
     private Unbinder unbind;
 
@@ -49,6 +45,14 @@ public abstract class BaseFragment<P extends BasePresenter>
      */
     protected abstract void init(View view);
 
+    protected abstract void release();
+
+    abstract protected P bindPresenter();
+
+    abstract protected void registerRxBus();
+
+    abstract protected void unregisterRxBus();
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -56,7 +60,7 @@ public abstract class BaseFragment<P extends BasePresenter>
         View view = inflater.inflate(initContentView(), container, false);
         this.unbind = ButterKnife.bind(this, view);
         this.mPresenter = checkNotNull(bindPresenter());
-        this.mContext = getContext();
+        this.mContext = getActivity();
         return view;
     }
 
@@ -64,22 +68,20 @@ public abstract class BaseFragment<P extends BasePresenter>
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         init(view);
+        registerRxBus();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbind.unbind();
+        unregisterRxBus();
+        release();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mRxLifecycle.onDestroy();
-    }
-
-    @Override
-    public RxLifecycle bindLifeCycle() {
-        return mRxLifecycle;
+        InfoApplication.getRefWatcher(getActivity()).watch(this);
     }
 }

@@ -45,6 +45,7 @@ ext {
             rxandroidVersion            :   "1.2.1",
             timberVersion               :   "4.5.0",
             leakcanaryVersion           :   "1.5",
-            xrecyclerviewVersion        :   "1.3.2"
+            xrecyclerviewVersion        :   "1.3.2",
+            rxlifecycleVersion          :   "1.0"
     ]
 }

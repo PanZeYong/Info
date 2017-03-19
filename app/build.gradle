@@ -68,6 +68,10 @@ dependencies {
     compile "io.reactivex:rxjava:${libs.rxjavaVersion}"
     compile "io.reactivex:rxandroid:${libs.rxandroidVersion}"
 
+    //RxLifecycle
+    compile "com.trello:rxlifecycle:${libs.rxlifecycleVersion}"
+    compile "com.trello:rxlifecycle-components:${libs.rxlifecycleVersion}"
+
     //Timber(日志)
     compile "com.jakewharton.timber:timber:${libs.timberVersion}"
 

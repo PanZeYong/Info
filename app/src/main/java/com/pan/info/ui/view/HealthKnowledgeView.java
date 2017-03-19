@@ -1,6 +1,9 @@
 package com.pan.info.ui.view;
 
 import com.pan.info.base.BaseView;
+import com.pan.info.bean.HealthKnowledgeCategoryBean;
+
+import java.util.List;
 
 /**
  * Author : Pan
@@ -8,4 +11,7 @@ import com.pan.info.base.BaseView;
  */
 
 public interface HealthKnowledgeView extends BaseView {
+    void getCategories(List<HealthKnowledgeCategoryBean.TngouBean> list);
+
+    void showErrorMessage(String message);
 }

@@ -97,5 +97,16 @@ public class HealthKnowledgeCategoryBean {
         public void setTitle(String title) {
             this.title = title;
         }
+
+        @Override
+        public String toString() {
+            return "[ id = " + getId() + " " +
+                    "title = " + title + " " +
+                    "name = " + name + " " +
+                    "description = " + description + " " +
+                    "keywords = " + keywords + " " +
+                    "seq = " + seq + 
+                    "]";
+        }
     }
 }

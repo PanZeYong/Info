@@ -29,14 +29,14 @@ public class RxBus {
         return sRxBus;
     }
 
-    public static void post(Object... objects) {
+    public void post(Object... objects) {
         if (null == objects) return;
         for (Object object : objects) {
             getInstance()._bus.onNext(object);
         }
     }
 
-    public static <T> Observable<T> get(Class<T> eventType) {
+    public <T> Observable<T> toObserverable(Class<T> eventType) {
         return getInstance()._bus.ofType(eventType);
     }
 }

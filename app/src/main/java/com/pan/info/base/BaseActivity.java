@@ -8,11 +8,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-
 import com.pan.info.R;
-import com.pan.info.util.RxLifecycle;
 import com.pan.info.util.StatusBarUtils;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
 
@@ -24,9 +22,7 @@ import static com.google.gson.internal.$Gson$Preconditions.checkNotNull;
  */
 
 public abstract class BaseActivity<P extends BasePresenter>
-        extends AppCompatActivity implements RxLifecycle.Impl {
-
-    private RxLifecycle mRxLifecycle = new RxLifecycle();
+        extends RxAppCompatActivity {
 
     protected P mPresenter;
 
@@ -79,13 +75,7 @@ public abstract class BaseActivity<P extends BasePresenter>
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.bind(this).unbind();
-        mRxLifecycle.onDestroy();
         release();
-    }
-
-    @Override
-    public RxLifecycle bindLifeCycle() {
-        return mRxLifecycle;
     }
 
     protected void replace(@IdRes int containerViewId, Fragment fragment) {
