@@ -12,6 +12,7 @@ import com.trello.rxlifecycle.components.support.RxFragment;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import timber.log.Timber;
 
 import static com.google.gson.internal.$Gson$Preconditions.checkNotNull;
 
@@ -28,6 +29,9 @@ public abstract class BaseFragment<P extends BasePresenter>
     private Unbinder unbind;
 
     protected Context mContext;
+
+    // 控件是否已经初始化
+    private boolean isCreateView = false;
 
     /**
      * 返回要加载布局id
@@ -53,27 +57,49 @@ public abstract class BaseFragment<P extends BasePresenter>
 
     abstract protected void unregisterRxBus();
 
+    abstract protected void lazyLoadData();
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        Timber.d("onCreateView");
         View view = inflater.inflate(initContentView(), container, false);
         this.unbind = ButterKnife.bind(this, view);
         this.mPresenter = checkNotNull(bindPresenter());
         this.mContext = getActivity();
+        this.isCreateView = true;
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Timber.d("onViewCreated");
         init(view);
         registerRxBus();
     }
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser && isCreateView) {
+            lazyLoadData();
+        }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (getUserVisibleHint()) {
+            lazyLoadData();
+        }
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Timber.d("onDestroyView");
         unbind.unbind();
         unregisterRxBus();
         release();
@@ -82,6 +108,7 @@ public abstract class BaseFragment<P extends BasePresenter>
     @Override
     public void onDestroy() {
         super.onDestroy();
+        Timber.d("onDestroy");
         InfoApplication.getRefWatcher(getActivity()).watch(this);
     }
 }

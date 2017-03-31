@@ -5,6 +5,10 @@ import android.content.Context;
 import com.pan.info.Constant;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Author : Pan
@@ -22,5 +26,10 @@ public class Utils {
 
     public static int calculateMemorySize() {
         return Constant.CACHE_SIZE;
+    }
+
+    public static String getTime(long time) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.CANADA);
+        return format.format(new Date(time));
     }
 }

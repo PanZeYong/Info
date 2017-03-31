@@ -24,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:textSize="12sp"
             android:text="标题" />
 
         <TextView
@@ -31,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:textSize="12sp"
             android:text="关键字" />
 
         <RelativeLayout

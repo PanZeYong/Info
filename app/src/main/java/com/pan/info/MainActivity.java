@@ -17,10 +17,13 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     @BindView(R.id.tool_bar)
     Toolbar mToolbar;
+
     @BindView(R.id.container)
     FrameLayout mContent;
+
     @BindView(R.id.navigation_view)
     NavigationView mNavigationView;
+
     @BindView(R.id.drawer)
     DrawerLayout mDrawer;
 
@@ -85,4 +88,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
             return false;
         }
     };
+
+    @Override
+    public void showErrorMessage(String message) {
+
+    }
 }

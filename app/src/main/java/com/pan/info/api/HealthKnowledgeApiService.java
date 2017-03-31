@@ -5,6 +5,7 @@ import com.pan.info.bean.HealthKnowledgeDetailBean;
 import com.pan.info.bean.HealthKnowledgeListBean;
 
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import rx.Observable;
@@ -19,6 +20,7 @@ public interface HealthKnowledgeApiService {
     @GET("classify")
     Observable<HealthKnowledgeCategoryBean> getCategories();
 
+    @FormUrlEncoded
     @POST("list")
     Observable<HealthKnowledgeListBean> getList(
             @Field("id") int id,

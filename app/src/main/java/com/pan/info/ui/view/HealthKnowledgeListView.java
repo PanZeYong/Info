@@ -11,6 +11,10 @@ import java.util.List;
  * Date : 13/03/2017
  */
 
-public interface HealthKnowledgeView extends BaseView {
-    void getCategories(List<HealthKnowledgeCategoryBean.TngouBean> list);
+public interface HealthKnowledgeListView extends BaseView {
+    void getList(List<HealthKnowledgeListBean.TngouBean> list);
+
+    void showProgressBar();
+
+    void hideProgressBar();
 }

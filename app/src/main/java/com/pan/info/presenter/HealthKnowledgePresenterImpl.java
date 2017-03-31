@@ -8,13 +8,17 @@ import com.pan.info.api.ApiFactory;
 import com.pan.info.base.RxBus;
 import com.pan.info.base.RxEvent;
 import com.pan.info.bean.HealthKnowledgeCategoryBean;
+import com.pan.info.bean.HealthKnowledgeListBean;
 import com.pan.info.ui.view.HealthKnowledgeView;
+import com.pan.info.util.NetworkUtils;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
 import java.util.List;
 
 import rx.Observer;
+import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
@@ -55,7 +59,7 @@ public class HealthKnowledgePresenterImpl extends HealthKnowledgePresenter{
                 .subscribe(new Observer<List<HealthKnowledgeCategoryBean.TngouBean>>() {
                     @Override
                     public void onCompleted() {
-                        Timber.d("onCompleted");
+                        Timber.d(Constant.TAG + "onCompleted");
                         RxBus.getInstance().post(new RxEvent.RxEventBuilder(Constant.CATEGORIES, true).build());
                     }
 
@@ -63,12 +67,14 @@ public class HealthKnowledgePresenterImpl extends HealthKnowledgePresenter{
                     public void onError(Throwable e) {
                         RxBus.getInstance().post(new RxEvent.RxEventBuilder(Constant.CATEGORIES, false).build());
                         mView.showErrorMessage(e.getMessage());
+                        Timber.d(Constant.TAG + "onError " + e.getMessage());
                     }
 
                     @Override
                     public void onNext(List<HealthKnowledgeCategoryBean.TngouBean> categories) {
-                        Timber.d("Size : " + categories.size());
+//                        Timber.d("Size : " + categories.size());
                         mView.getCategories(categories);
+                        Timber.d(Constant.TAG + "onNext");
                     }
                 });
     }
