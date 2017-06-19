@@ -6,7 +6,5 @@
     <corners
         android:radius="@dimen/radius"/>
 
-    <size android:height="@dimen/adapter_item_avatar_height" />
-
     <solid android:color="@color/white"/>
 </shape>

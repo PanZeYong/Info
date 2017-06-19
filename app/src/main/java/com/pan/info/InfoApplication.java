@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.orhanobut.hawk.Hawk;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -26,6 +27,8 @@ public class InfoApplication extends Application {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+
+        Hawk.init(this).build();
     }
 
     public static RefWatcher getRefWatcher(Context context) {

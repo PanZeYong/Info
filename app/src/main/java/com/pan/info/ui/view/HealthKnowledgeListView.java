@@ -17,4 +17,8 @@ public interface HealthKnowledgeListView extends BaseView {
     void showProgressBar();
 
     void hideProgressBar();
+
+    void showEmptyView();
+
+    void hideEmptyView();
 }

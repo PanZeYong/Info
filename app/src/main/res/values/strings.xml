@@ -16,4 +16,6 @@
     <string name="collect_count">收藏数：</string>
     <string name="comment_count">评论数：</string>
     <string name="visit_count">访问数：</string>
+
+    <string name="empty">加载失败，点击试一试呗</string>
 </resources>

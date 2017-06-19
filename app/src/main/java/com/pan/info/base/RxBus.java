@@ -13,7 +13,8 @@ import rx.subjects.Subject;
 public class RxBus {
     private static volatile RxBus sRxBus;
 
-    private static final Subject<Object, Object> _bus = new SerializedSubject<>(PublishSubject.create());
+    private static final Subject<Object, Object> _bus =
+            new SerializedSubject<>(PublishSubject.create());
 
     private RxBus() {}
 

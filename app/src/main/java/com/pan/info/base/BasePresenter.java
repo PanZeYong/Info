@@ -16,7 +16,7 @@ public abstract class BasePresenter <V extends BaseView>{
 
     public abstract void detachView();
 
-    public boolean checkIsNetwrok(Context context) {
+    public boolean checkIsNetwork(Context context) {
         if (NetworkUtils.isNetworkConnected(context)) {
             return true;
         } else {

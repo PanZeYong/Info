@@ -52,6 +52,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     @Override
     protected void release() {
         mPresenter.detachView();
+
+        if (null != listener) {
+            listener = null;
+        }
     }
 
     @Override

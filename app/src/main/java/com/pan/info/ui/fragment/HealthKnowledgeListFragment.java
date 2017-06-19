@@ -3,8 +3,11 @@ package com.pan.info.ui.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.pan.info.Constant;
@@ -17,11 +20,13 @@ import com.pan.info.presenter.HealthKnowledgeListPresenter;
 import com.pan.info.presenter.HealthKnowledgeListPresenterImpl;
 import com.pan.info.ui.adapter.HealthKnowledgeListAdapter;
 import com.pan.info.ui.view.HealthKnowledgeListView;
+import com.pan.info.ui.view.SpaceItemDecoration;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import rx.Subscription;
 import rx.functions.Action1;
 import timber.log.Timber;
@@ -40,6 +45,8 @@ public class HealthKnowledgeListFragment extends BaseFragment<HealthKnowledgeLis
     ProgressBar mLoadProgressBar;
 
     private final static int ROWS = 20;
+    @BindView(R.id.tv_empty)
+    TextView mEmpty;
 
     private HealthKnowledgeListAdapter mAdapter;
     private LinearLayoutManager mLinearLayoutManager;
@@ -68,6 +75,7 @@ public class HealthKnowledgeListFragment extends BaseFragment<HealthKnowledgeLis
         mAdapter = new HealthKnowledgeListAdapter(mContext);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addItemDecoration(new SpaceItemDecoration(5));
         mRecyclerView.addOnScrollListener(listener);
     }
 
@@ -113,7 +121,7 @@ public class HealthKnowledgeListFragment extends BaseFragment<HealthKnowledgeLis
     @Override
     protected void lazyLoadData() {
         if (!isLoadData) {
-            if (mPresenter.checkIsNetwrok(mContext)) {
+            if (mPresenter.checkIsNetwork(mContext)) {
                 mPresenter.getList(mContext, mCategoryId, mCurrentPage, ROWS);
             }
         }
@@ -139,6 +147,16 @@ public class HealthKnowledgeListFragment extends BaseFragment<HealthKnowledgeLis
     @Override
     public void hideProgressBar() {
         mLoadProgressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showEmptyView() {
+        mEmpty.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideEmptyView() {
+        mEmpty.setVisibility(View.GONE);
     }
 
     @Override
@@ -178,5 +196,13 @@ public class HealthKnowledgeListFragment extends BaseFragment<HealthKnowledgeLis
         bundle.putInt("categoryId", categoryId);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.bind(this, rootView);
+        return rootView;
     }
 }

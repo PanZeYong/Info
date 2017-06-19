@@ -66,8 +66,10 @@ public class HealthKnowledgePresenterImpl extends HealthKnowledgePresenter{
                     @Override
                     public void onError(Throwable e) {
                         RxBus.getInstance().post(new RxEvent.RxEventBuilder(Constant.CATEGORIES, false).build());
-                        mView.showErrorMessage(e.getMessage());
-                        Timber.d(Constant.TAG + "onError " + e.getMessage());
+                        if (null != mView) {
+                            mView.showErrorMessage(e.getMessage());
+                            Timber.d(Constant.TAG + "onError " + e.getMessage());
+                        }
                     }
 
                     @Override

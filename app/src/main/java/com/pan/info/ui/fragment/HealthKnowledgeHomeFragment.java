@@ -118,7 +118,7 @@ public class HealthKnowledgeHomeFragment extends BaseFragment<HealthKnowledgePre
     public void onResume() {
         super.onResume();
         Timber.d("onResume");
-        if (mPresenter.checkIsNetwrok(mContext)) {
+        if (mPresenter.checkIsNetwork(mContext)) {
             mPresenter.getCategories(mContext);
         } else {
             Timber.d("Dialog");
